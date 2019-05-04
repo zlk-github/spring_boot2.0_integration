@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.redis.mapper.BaseUserMapper">
+    <parameterMap type="com.redis.model.po.BaseUser"    id="baseUserParameter"></parameterMap>
+    <resultMap type="com.redis.model.po.BaseUser"   id="baseUserResult"></resultMap>
+
+    <!--查询用户信息列表  -->
+    <select  id="queryUserList"  parameterMap="baseUserParameter" resultMap="baseUserResult" >
+       SELECT bu.id id,
+                bu.account account,
+                bu.`password` password,
+                bu.user_name userName,
+                bu.sex sex,
+                bu.remark remark,
+                bu.create_user createUser,
+                bu.create_time createTime
+        FROM base_user bu
+        WHERE 1=1
+        <if test="account!=null and account!=''">AND account like CONCAT(CONCAT('%',#{account}),'%') </if>
+    </select>
+
+    <!-- 新增用户信息-->
+    <insert id="insertUser" parameterMap="baseUserParameter">
+        insert into base_user <include refid="insert_column"/> <include refid="insert_values"/>
+    </insert>
+
+    <sql id="insert_column">
+        <trim prefix="(" suffixOverrides="," suffix=")">
+            <if test="account != null and account != '' ">account,</if>
+            <if test="password != null and password != '' ">password,</if>
+            <if test="userName != null and userName != '' ">user_name,</if>
+            <if test="sex != null and sex != '' ">sex,</if>
+            <if test="remark != null and remark != '' ">remark,</if>
+            <if test="createUser != null and createUser != '' ">create_user,</if>
+            create_time,
+            <if test="updateUser != null and updateUser != '' ">update_user,</if>
+            update_time
+        </trim>
+    </sql>
+
+    <sql id="insert_values">
+        <trim prefix="values(" suffixOverrides="," suffix=")">
+            <if test="account != null and account != '' ">#{account},</if>
+            <if test="password != null and password != '' ">#{password},</if>
+            <if test="userName != null and userName != '' ">#{userName},</if>
+            <if test="sex != null and sex != '' ">#{sex},</if>
+            <if test="remark != null and remark != '' ">#{remark},</if>
+            <if test="createUser != null and createUser != '' ">#{createUser},</if>
+            now(),
+            <if test="updateUser != null and updateUser != '' ">#{updateUser},</if>
+            now()
+        </trim>
+    </sql>
+
+    <!-- 修改用户信息 -->
+    <update id="updateUser" parameterMap="baseUserParameter">
+        update base_user
+        <trim prefix="set" suffixOverrides="," >
+            <if test="account != null and account != '' ">account=#{account},</if>
+            <if test="password != null and password != '' ">password=#{password},</if>
+            <if test="userName != null and userName != '' ">user_name=#{userName},</if>
+            <if test="sex != null and sex != '' ">sex=#{sex},</if>
+            remark=#{remark},
+            <if test="updateUser != null and updateUser != '' ">update_user=#{updateUser},</if>
+            update_time=now()
+        </trim>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM base_user  WHERE id=#{id}
+    </delete>
+
+</mapper>
