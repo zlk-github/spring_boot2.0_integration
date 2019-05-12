@@ -2,6 +2,7 @@ package com.swagger;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -32,6 +33,7 @@ public class Swagger{
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
+                //.apis(basePackage("com.XX.api.controller.broad"+splitor+"com.XX.api.controller.village"))
                 .apis(RequestHandlerSelectors.basePackage("com.swagger.controller"))
                 .paths(PathSelectors.any())
                 .build();
