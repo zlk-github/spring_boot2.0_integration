@@ -48,7 +48,8 @@ public class InterceptorConfig implements WebMvcConfigurer {
                 .allowedMethods("*").allowedHeaders("*")
                 .allowCredentials(true)
                 .exposedHeaders(HttpHeaders.SET_COOKIE).maxAge(3600L);
-        /*response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
+        /*或者
+        response.setHeader("Access-Control-Allow-Origin", request.getHeader("Origin"));
         response.addHeader("Access-Control-Allow-Credentials", "true");*/
     }
 

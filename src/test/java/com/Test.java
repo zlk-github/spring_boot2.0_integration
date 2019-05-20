@@ -1,8 +1,6 @@
 package com;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * desc:
@@ -12,8 +10,13 @@ import java.util.Scanner;
  */
 public class Test {
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-        int line = input.nextInt();
+        Map<String,String> map = new HashMap<>();
+        map.put("1.1.3 厉害","中国");
+        map.put("1.1.4 好的","美国");
+        System.out.println(map.get("1.1.3 厉害"));
+
+        /*Scanner input = new Scanner(System.in);
+        int line = input.nextInt();*/
 
     }
 

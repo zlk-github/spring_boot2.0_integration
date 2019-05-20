@@ -30,7 +30,14 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
-
+    #rabbitmq
+    application:
+        name: pirng-boot-rabbitmq
+    rabbitmq:
+          host: 127.0.0.1
+          port: 5672
+          username: guest
+          password: guest
 
 ################ Redis 配置################
 
@@ -74,7 +81,6 @@ logging:
      com:
         redis:
           mapper: debug
-
 
 #hibernate配置这项
 #spring：
