@@ -30,6 +30,7 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+
     #rabbitmq
     application:
         name: pirng-boot-rabbitmq
@@ -38,6 +39,12 @@ spring:
           port: 5672
           username: guest
           password: guest
+
+    #solr
+    data:
+        solr:
+          host: http://127.0.0.1:8983/solr/techproducts
+          #http://localhost:8983/solr/#/techproducts/
 
 ################ Redis 配置################
 
