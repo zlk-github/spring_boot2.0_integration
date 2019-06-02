@@ -8,7 +8,7 @@
     <select  id="queryUserList"  parameterMap="baseUserParameter" resultMap="baseUserResult" >
        SELECT bu.id id,
                 bu.account account,
-                bu.`password` password,
+                bu.password password,
                 bu.user_name userName,
                 bu.sex sex,
                 bu.remark remark,

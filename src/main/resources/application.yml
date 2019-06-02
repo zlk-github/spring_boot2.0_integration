@@ -8,14 +8,21 @@ server:
 ################数据源配置################
 spring:
     datasource:
-        name: blog
-        url: jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&useUnicode:true&characterEncoding:utf8
-        username: root
-        password: 123456
+        #name: blog
+        #url: jdbc:mysql://127.0.0.1:3306/blog?useSSL=false&useUnicode:true&characterEncoding:utf8
+        #username: root
+        #password: 123456
         # password: cY+qV/UGnuFJ/qBQDppj++1hxX1buy+NlXWww::
+
+        url: jdbc:oracle:thin:@localhost:1521:ORCL
+        username: zhoulk11
+        password: zhoulk11
         # 使用druid数据源
+
         type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
+        #driver-class-name: com.mysql.jdbc.Driver
+        driver-class-name: oracle.jdbc.OracleDriver
+
         #filters: stat,config
         filters: stat
         maxActive: 20
